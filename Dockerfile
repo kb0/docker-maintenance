@@ -1,13 +1,6 @@
-FROM alpine:3.8
+FROM blacklabelops/jobber:latest
 MAINTAINER Kirill Bychkov <kb@na.ru>
 
-ENV JOB "* * * * *  date"
-
 RUN set -x \
-  && apk add --no-cache --update dcron mysql-client \
+  && apk add --no-cache --update mysql-client \
   && rm -rf /var/cache/apk/*
-
-RUN echo $JOB > /var/spool/cron/crontabs/root
-  
-# Define default command.
-CMD ["su", "-c", "/usr/sbin/crond -f"]
