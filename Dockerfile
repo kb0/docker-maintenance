@@ -10,4 +10,4 @@ RUN set -x \
 RUN echo $JOB > /var/spool/cron/crontabs/root
   
 # Define default command.
-ENTRYPOINT /usr/sbin/crond -f
+CMD ["su", "-c", "/usr/sbin/crond -f"]
