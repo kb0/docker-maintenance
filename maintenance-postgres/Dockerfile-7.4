@@ -16,6 +16,7 @@ RUN set -x \
 		 libxslt-dev \
   && rm -rf /var/cache/apk/*
 
+
 RUN cd /opt \
 	&& wget -c https://ftp.postgresql.org/pub/source/v7.4.30/postgresql-7.4.30.tar.gz \
 	&& tar -zxvf postgresql-7.4.30.tar.gz \
