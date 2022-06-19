@@ -6,7 +6,7 @@ on:
       - 'master'
 
 env:
-  IMAGE_NAME: Monday
+  IMAGE_NAME: maintenance
 
 jobs:
   build:
