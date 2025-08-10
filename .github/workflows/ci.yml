@@ -62,3 +62,15 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:postgres
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:postgres-buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:postgres-buildcache,mode=max
+
+      -
+        name: Build and push IPSEC
+        uses: docker/build-push-action@v2
+        with:
+          context: ./ipsec
+          file: ./ipsec/Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:ipsec
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:ipsec-buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:ipsec-buildcache,mode=max
