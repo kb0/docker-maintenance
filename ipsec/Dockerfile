@@ -6,9 +6,9 @@ RUN set -x \
     && echo "https://mirror.yandex.ru/mirrors/alpine/v3.22/main" > /etc/apk/repositories \
     && apk add --no-cache bash bind-tools coreutils openssl iptables strongswan
 
-COPY sysctl.d/99-ipsec.conf /etc/sysctl.d/99-ipsec.conf
+COPY etc/sysctl.d/99-ipsec.conf /etc/sysctl.d/99-ipsec.conf
 
-COPY ipsec.d/* /etc/ipsec.d/
+COPY etc/ipsec.d/* /etc/ipsec.d/
 RUN echo "include /etc/ipsec.d/*.conf" > /etc/ipsec.conf
 
 COPY scripts/entrypoint.sh /entrypoint.sh
